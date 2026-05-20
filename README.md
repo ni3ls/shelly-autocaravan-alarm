@@ -16,25 +16,30 @@ There are two ways to get this system running in your van:
 
 ### 🛠️ Path 1 — Do it yourself
 
-**Here is the code for it.** Everything is in this repository: the alarm scripts (Simple and Advanced versions), the KVS configuration helper, the system diagram, and the documentation you'll need to install it.
+**Here is the code for it.** Everything is in this repository: the alarm scripts (Simple and Advanced versions) and the system diagram you'll need to install it all yourself.
 
 This path is for you if:
 - You're comfortable with Shelly devices and their web UI
 - You can read and adapt a small JavaScript-like script
 - You don't mind sourcing the hardware (Shelly Plus 1 + BLU sensors + buttons + buzzer + 12V wiring) yourself
-- You like having full control and full transparency
+- You know how to setup the needed KVS parameter holders using the interface for this
+- You like having full control and full transparency of everything.
 
 → Jump to **[How it works](#how-it-works)** and **[Installation](#installation)** below.
 
 ### 📦 Path 2 — Or let us assist you
 
-**Prefer a ready-made kit?** We can prepare everything to your specific needs — pre-flashed gateway, pre-configured sensors paired to your devices, cloud scenes ready to go, all in a wired box with buzzer and a fused 12V cable. You receive it, install it in your van, and we make sure it's working on day 1 with up to 1.5 hours of remote setup assistance.
+**Prefer a ready-made kit?** We can prepare everything to your specific needs — pre-flashed gateway, pre-configured sensors paired to your devices, cloud scenes ready to go, all in a wired box with buzzer and a fused 12V cable. You receive it, install it in your van, and we make sure it's working on day 1 with up to 1.5 hours of remote setup assistance. 
 
 This path is for you if:
 - You'd rather not flash firmware or fiddle with KVS keys
 - You want the components selected and configured for your specific vehicle
 - You value the time it would take you to do this yourself
 - You'd like someone to be on the other end of an email if something doesn't behave
+
+More assistance may be bought if needed later. If the needs change or stop working. 
+E.g. you have purchased the Basic setup but want to change this to include the "dog inside / while we sleep" features of the advanced setup. 
+We can change the system remotely later to meet that need. If you buy your own additional devices that does not work as expected, we may assist. The additional devices offered here are priced to include the needed pre-configuration and inclusion in your system. 
 
 → Jump to **[Commercial edition — pricing](#commercial-edition--pricing)** below.
 
@@ -88,11 +93,11 @@ The buzzer can be replaced by a relay controlling whatever you want. We're consi
 
 ### Connectivity
 
-The gateway uses Wi-Fi to alert externally. The system runs autonomously without internet, but we have a router in the van anyway.
+The gateway uses Wi-Fi to alert externally. The system runs autonomously without internet, a router in the van is required for the system to work properly.
 
-The sensors all connect to the gateway over **BLE (Bluetooth Low Energy)**. Shelly says the coverage distance is up to 75 m. We only need 10 🙂
+The sensors all connect to the gateway over **BLE (Bluetooth Low Energy)**. Shelly says the coverage distance is up to 75 m. We only need 10-15 for a van 🙂
 
-The gateway needs a **12 V supply** and consumes about **1.2 W**. With a 100 Ah battery that's more than a month of operation. Add the 10 W our router uses and our 300 Ah lithium would survive at least 10 days without any supporting systems. With our 120 W solar panel there is no noticeable consumption when sunlight is available (self-sustaining 100 %).
+The gateway needs a **12 V supply** and consumes about **1.2 W**. With a 100 Ah battery that's more than a month of operation. Add the typical 10 W usage of a router and the entire system will still work for many days any supporting electrical systems. With our 120 W solar panel there is no noticeable consumption when sunlight is available (self-sustaining 100 %).
 
 ### Weak points (be honest)
 
@@ -101,18 +106,29 @@ The gateway needs a **12 V supply** and consumes about **1.2 W**. With a 100 Ah 
 - The Shelly hardware is not industrial-grade and can fail
 - The alarm script is not ISO 27001-certified and not bulletproof
 
-We find it useful anyway.
+### Weak points countermeasures:
+- If someone jams the Wi-Fi *and* BLE frequencies, the system fails BUT:
+  - With the purchased model we include a watchdog monitor of the system so you are informed if the gateway does not respond for half an hour (may be adjusted). That way you always know if the connection to the system fail
+- If a thief learns your activation key and hacks the system locally (parked next to you), the system fails
+  - The thief have to guess your password and know which system to hack while sitting close top the van. Highly unlikely
+- The Shelly hardware is not industrial-grade and can fail
+  - And is cheap to replace :-)
+- The alarm script is not ISO 27001-certified and not bulletproof
+  - But it does not cost a foutune either.
+
+We find it useful anyway and live withe the risks.
 
 ### Summary of the system
 
 - **Shelly Plus 1 Gen3** is wired to a **12 V buzzer** via its relay output and a 12 V supply (GND + 12V+).
 - **Wi-Fi** connects the Shelly device to a router, providing internet access for Shelly Cloud scene calls (alarm push, armed/disarmed notifications).
+- **Watchdog** In the commercial solution we include an external watchdog monitoring the availability of the system externally.
 - **BLE** receives events from BLU devices in range:
-  - 2× **Shelly BLU Tough Button** — primary user controls (arm/disarm)
-  - 1× **Shelly BLU 4-Button** (v2 only) — additional control surface
-  - **Shelly BLU Door/Window** sensor(s) and **Shelly BLU Motion** sensor — the alarm triggers
+  - **Shelly BLU Tough Button** — primary user controls (arm/disarm)
+  - **Shelly BLU 4-Button** (v2 only) — additional control surface mounted inside the van permanently
+  - **Shelly BLU Door/Window** sensor(s) and **Shelly BLU Motion** sensor — the alarm triggers - More may be added later (Smoke alarm, Gas alarm, Flood sensor... Shelly have many interesting devices in their portfolio)
 
-There are no wires between the Shelly Plus 1 Gen3 and the BLU devices — all sensor and button events arrive as Bluetooth Low Energy advertisements that the script's BLE scanner picks up and parses (BTHome v2).
+There are no wires between the Shelly Plus 1 Gen3 and the BLU devices — all sensor and button events arrive as Bluetooth Low Energy advertisements that the script's BLE scanner picks up and parses (BTHome v2). In our experience the batteries last longer than a year so far - We will keep you updated on this as time goes by.
 
 ---
 
@@ -127,7 +143,7 @@ The advanced version is for people with pets and the need to secure the perimete
 
 ### Activation patterns
 
-The system is controlled with button click patterns. This is 100 % customizable — the pattern below is what we use:
+The system is controlled with button click patterns. This is 100 % customizable — the pattern below is what we use (default):
 
 | Pattern | Action |
 |---|---|
@@ -136,15 +152,15 @@ The system is controlled with button click patterns. This is 100 % customizable 
 | Triple short click | Activate "SLEEP" mode when disarmed (Advanced only) / Deactivate when armed |
 | Single long click | Deactivate the alarm in any state |
 
-To arm: single short click. To arm in SLEEP mode: triple click (when system is disarmed) — Advanced only. To disarm: double, triple, or long click.
+To arm: single short click. To arm in SLEEP mode: triple click (when system is disarmed) — Advanced only. To disarm: double, triple (not advanced mode), or long click (our preference).
 
 ### Alarm sounds (buzzer)
 
-When armed by single click, the buzzer plays a series of beeps with shorter and shorter delays (default 10 s). Then a long continuous warning beep — system is almost armed. Then silent and watching.
+When armed by single click, the buzzer plays a series of beeps with shorter and shorter delays (default 10 s) — system is almost armed. Then a long continuous warning beep. Then the system is armed, silent and watching for intruders.
 
 - **Re-arming (already armed):** short confirmation beep
-- **Disarming (double / triple / long click):** long double beep
-- **Sleep mode (armed):** single beep on arming
+- **Disarming (double / triple (not advanced)/ long click):** long double beep
+- **Sleep mode armed:** single beep to avoid waking the dog.
 
 **A long double beep always confirms deactivation.**
 
@@ -154,19 +170,14 @@ When armed by single click, the buzzer plays a series of beeps with shorter and 
 
 ```
 shelly-autocaravan-alarm/
-├── README.md
+├── README.md                               ← This file
+├── Shelly_Autocaravan_Alarm_Flyer_v1_1.pdf ←  Commercial description and pricing
 ├── Shelly_alarm.jpg               ← reference diagram (above)
-├── Shelly_alarm_drawio.svg        ← editable diagram source
-├── setup-helper.html              ← KVS configuration UI (open locally in a browser)
-├── docs/
-│   └── example-kvs-values.md      ← dummy example values for reference
 ├── v1-simple/
 │   └── alarm-v1.3.0.js            ← single-mode alarm
 └── v2-advanced/
-    └── alarm-v2.1.0.js            ← + sleep mode, + 4-button device
+    └── alarm-v2.1.0.js            ← + sleep mode, dual scene
 ```
-
-The `.drawio` source is editable in [drawio.com](https://app.diagrams.net) if you want to adapt the diagram.
 
 ---
 
@@ -175,9 +186,8 @@ The `.drawio` source is editable in [drawio.com](https://app.diagrams.net) if yo
 1. Open the Shelly Plus 1 Gen3 web UI (`http://<device-ip>`).
 2. Go to **Scripts → Add script**.
 3. Paste the contents of `v1-simple/alarm-v1.3.0.js` or `v2-advanced/alarm-v2.1.0.js`.
-4. **Save → Start → enable "Run on startup"**.
-5. Open `setup-helper.html` in your browser and populate the KVS keys for your environment.
-6. Restart the script (**Stop → Start**) so it reads the new KVS values.
+4. Populate the needed KVS keys for your environment as described in the code.
+5. **Save → Start → enable "Run on startup"**.
 
 The script will run with the baked-in defaults if KVS is empty — useful for first install. Once KVS is populated, the script picks up those values on the next startup.
 
@@ -204,39 +214,6 @@ This lets you keep secrets (cloud auth key, scene IDs) and device-specific MAC a
 | `dev.sleep_sensors` | string (CSV) | Subset of sensors that remain active in sleep mode | v2 only |
 
 The runtime key `alarm_state` is also written by the script to mirror the current state (`disarmed` / `arming` / `armed` / `armed_away` / `armed_sleep` / `alarming`).
-
-See [docs/example-kvs-values.md](docs/example-kvs-values.md) for concrete dummy examples.
-
-### Setting KVS values
-
-**Option A: setup-helper.html (recommended)**
-
-Open `setup-helper.html` in any browser on your local network. Fill in the form fields, click **Generate URLs**, then either tap each URL one by one or use **Run all** to open them in sequence. Each URL writes one KVS key on the device.
-
-The page runs entirely in your browser — it generates URLs, it doesn't send anything anywhere except to your Shelly device when you click a link.
-
-**Option B: manual KVS.Set URLs**
-
-Open these URLs in a browser (one per key), substituting your own values:
-
-```
-http://<device-ip>/rpc/KVS.Set?key=cfg.cloud_server&value=shelly-XX-eu.shelly.cloud
-http://<device-ip>/rpc/KVS.Set?key=cfg.cloud_auth&value=YOUR_AUTH_KEY
-http://<device-ip>/rpc/KVS.Set?key=cfg.scene_alarm&value=1770000000001
-http://<device-ip>/rpc/KVS.Set?key=cfg.scene_armed&value=1770000000002
-http://<device-ip>/rpc/KVS.Set?key=cfg.scene_disarmed&value=1770000000003
-http://<device-ip>/rpc/KVS.Set?key=dev.buttons&value=aa:bb:cc:dd:ee:01,aa:bb:cc:dd:ee:02
-http://<device-ip>/rpc/KVS.Set?key=dev.sensors&value=aa:bb:cc:dd:ee:10,aa:bb:cc:dd:ee:11
-```
-
-Plus, for v2.1.0:
-
-```
-http://<device-ip>/rpc/KVS.Set?key=dev.buttons4&value=aa:bb:cc:dd:ee:20
-http://<device-ip>/rpc/KVS.Set?key=dev.sleep_sensors&value=aa:bb:cc:dd:ee:10
-```
-
-Each request returns `{"etag":"...", "rev":...}` on success.
 
 ---
 
@@ -278,7 +255,7 @@ Everything you need to source if you're going the DIY route:
 - **Shelly BLU 4-Button** (v2 only, optional) — additional control surface
 - **BLU sensors** (door/window, motion, etc.) — the alarm triggers
 - **One "dummy" BLU Door/Window sensor** kept permanently closed — required by Shelly's alarm scene UI to satisfy the "scene must have a trigger device" rule
-- **12 V supply** with appropriate fusing
+- **12 V supply cables** with appropriate fusing
 
 See the reference diagram at the top of this README for the physical topology.
 
@@ -309,10 +286,10 @@ Configured and added to any kit:
 
 | Device | Price |
 |---|---|
-| Door/window sensor | €25 each |
-| Motion sensor | €30 each |
-| Tough button | €25 each |
-| 4-button | €25 each |
+| Door/window sensor |***€25 each*** |
+| Motion sensor | ***€30 each*** |
+| Tough button | ***€25 each*** |
+| 4-button | ***€25 each*** |
 
 ### Shipment
 
