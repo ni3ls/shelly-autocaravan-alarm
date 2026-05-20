@@ -1,6 +1,6 @@
 # Shelly Autocaravan Alarm
 
-A smart, low-power alarm system for **autocaravans, motorhomes and campervans**, built on the **Shelly Plus 1 Gen3/Gen4** and **Shelly BLU** wireless devices.
+A smart, low-power, low-cost DIY and subscription free alarm system for **autocaravans, motorhomes and campervans**, built on the **Shelly Plus 1 Gen3/Gen4** and **Shelly BLU** wireless devices.
 
 The system runs entirely on the Shelly device itself (mJS scripting runtime) — no external server, no proprietary hub, no subscription. Wireless BLE sensors trigger a local buzzer and a priority push notification to any number of phones via the free Shelly Cloud.
 
