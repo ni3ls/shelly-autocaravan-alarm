@@ -170,13 +170,14 @@ When armed by single click, the buzzer plays a series of beeps with shorter and 
 
 ```
 shelly-autocaravan-alarm/
-├── README.md                               ← This file
-├── Shelly_Autocaravan_Alarm_Flyer_v1_1.pdf ←  Commercial description and pricing
-├── Shelly_alarm.jpg               ← reference diagram (above)
+├── README.md                                    ← This file
+├── ShellyGuard_Autocaravan_Alarm_Flyer_1_da.pdf ←  Commercial description and pricing (Danish)
+├── ShellyGuard_Autocaravan_Alarm_Flyer_en.pdf   ←  Commercial description and pricing (English)
+├── Shelly_alarm.jpg                             ← reference diagram (above)
 ├── v1-simple/
-│   └── alarm-v1.3.0.js            ← single-mode alarm
+│   └── alarm-v1.3.0.js                          ← single-mode alarm
 └── v2-advanced/
-    └── alarm-v2.1.0.js            ← + sleep mode, dual scene
+    └── alarm-v2.1.0.js                          ← + sleep mode, dual scene
 ```
 
 ---
@@ -273,12 +274,12 @@ All kits include **up to 1.5 hours of remote setup assistance** to make sure you
 
 | Tier | What's included | Best for | Price |
 |---|---|---|---|
-| **Base Simple** *(gateway only)* | Shelly Plus 1 Gen3/4 pre-flashed • Box with buzzer + fused 12 V cable • Cloud scenes + 1 h remote online setup assistance | DIY builders adding their own sensors as needed | **€100** |
-| **Model 1** *(Simple — Small)* | Base Simple kit + 2× door/window sensors + 1× motion sensor + 2× tough key-ring buttons | Standard vans with 2 doors and one surveillance zone. Fundamental and safe | **€200** |
-| **Model 2** *(Simple — Medium)* | Base Simple kit + 5× door/window sensors + 1× motion sensor + 3× tough key-ring buttons | Larger motorhomes with multiple doors and three controllers included | **€300** |
-| **Base Advanced** *(gateway + sleep mode)* | Everything in Base Simple + Advanced firmware with SLEEP mode + up to 1.5 h online setup | Owners with pets that need perimeter only, or wanting overnight perimeter addition | **€150** |
-| **Model 3** *(Advanced — Small)* | Base Advanced kit + 2× door/window sensors + 1× motion sensor + 2× tough key-ring buttons | Same as Model 1 but with the advanced dual configuration — for dog owners and hard sleepers wanting night alarm | **€250** |
-| **Model 4** *(Advanced — Large)* | Base Advanced kit + 5× door/window sensors + 1× motion sensor + 3× tough key-ring buttons | The full kit for family rigs needing sleep mode / non-pet trigger — can be expanded with more devices as needed | **€350** |
+| **Base Simple** *(gateway only)* | Shelly Plus 1 Gen3/4 pre-flashed • Box with buzzer + fused 12 V cable • Cloud scenes + 1 h remote online setup assistance | DIY builders adding their own sensors as needed | **€165** |
+| **Model 1** *(Simple — Small)* | Base Simple kit + 2× door/window sensors + 1× motion sensor + 2× tough key-ring buttons | Standard vans with 2 doors and one surveillance zone. Fundamental and safe | **€325** |
+| **Model 2** *(Simple — Medium)* | Base Simple kit + 5× door/window sensors + 1× motion sensor + 3× tough key-ring buttons | Larger motorhomes with multiple doors and three controllers included | **€455** |
+| **Base Advanced** *(gateway + sleep mode)* | Everything in Base Simple + Advanced firmware with SLEEP mode + up to 1.5 h online setup | Owners with pets that need perimeter only, or wanting overnight perimeter addition | **€230** |
+| **Model 3** *(Advanced — Small)* | Base Advanced kit + 2× door/window sensors + 1× motion sensor + 2× tough key-ring buttons | Same as Model 1 but with the advanced dual configuration — for dog owners and hard sleepers wanting night alarm | **€400** |
+| **Model 4** *(Advanced — Large)* | Base Advanced kit + 5× door/window sensors + 1× motion sensor + 3× tough key-ring buttons | The full kit for family rigs needing sleep mode / non-pet trigger — can be expanded with more devices as needed | **€550** |
 
 ### Add-on devices
 
@@ -286,10 +287,10 @@ Configured and added to any kit:
 
 | Device | Price |
 |---|---|
-| Door/window sensor |***€25 each*** |
-| Motion sensor | ***€30 each*** |
-| Tough button | ***€25 each*** |
-| 4-button | ***€25 each*** |
+| Door/window sensor |***€45 each*** |
+| Motion sensor | ***€52 each*** |
+| Tough button | ***€45 each*** |
+| 4-button | ***€45 each*** |
 
 ### Shipment
 
